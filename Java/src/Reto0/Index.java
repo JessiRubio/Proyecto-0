@@ -109,7 +109,7 @@ public class Index extends JFrame implements ActionListener {
 			configuracionPlanta();
 		}
 		else if (o == btnHomeAulaSeleccionada || o == btnHomeMenuAulas || o == btnHomePlantas) {
-			configuracionInicio();
+			home();
 		}
 		else if(o ==btnPlanta1) {
 			BBDD.cargarDatosPlanta("p1");
@@ -197,7 +197,7 @@ public class Index extends JFrame implements ActionListener {
 		lblOpcionElegidaPlanta = new JLabel("Alarma");
 		lblOpcionElegidaPlanta.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblOpcionElegidaPlanta.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOpcionElegidaPlanta.setBounds(39, 30, 161, 35);
+		lblOpcionElegidaPlanta.setBounds(54, 30, 157, 35);
 		pnMenuPlanta.add(lblOpcionElegidaPlanta);
 		
 		btnPlanta1 = new JButton("Planta 1");
@@ -383,6 +383,13 @@ public class Index extends JFrame implements ActionListener {
 		btnCambiarEstado.setBounds(54, 248, 155, 39);
 		pnAula.add(btnCambiarEstado);
 		
+	}
+
+	private void home() {
+		pnInicio.setVisible(true);
+		pnMenuPlanta.setVisible(false);
+		pnMenuAulas.setVisible(false);
+		pnAula.setVisible(false);	
 	}
 	
 	private void configuracionPlanta() {
