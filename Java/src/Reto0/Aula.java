@@ -22,12 +22,6 @@ public class Aula implements Comparable<Aula>, Serializable{
 		this.EstadoAlarma = EstadoAlarma;
 		this.EstadoCalefaccion = EstadoCalefaccion;
 	}
-	
-	Aula(Aula A){
-		this.nAula = A.nAula;
-		this.EstadoAlarma = A.EstadoAlarma;
-		this.EstadoCalefaccion = A.EstadoCalefaccion;
-	}
 
 	public String getnAula() {
 		return nAula;
