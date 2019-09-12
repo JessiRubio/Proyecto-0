@@ -367,9 +367,6 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.setVisible(false);
 	}
 	
-	private void activarPlanta() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 }
