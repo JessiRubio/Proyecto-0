@@ -1,4 +1,4 @@
-package Java;
+package Reto0;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class Planta {
 	
 	Planta(){
 		this.nPlanta = "";
-		this.aulas = "";
+		
 	}
 
 }

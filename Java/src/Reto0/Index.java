@@ -133,13 +133,18 @@ public class Index extends JFrame implements ActionListener {
 				|| o == btnEspacio5 || o == btnEspacio6 || o == btnEspacio7 || o == btnEspacio8
 				|| o == btnEspacio9 || o == btnEspacio10 || o == btnEspacio11 || o == btnEspacio12
 				|| o == btnEspacio13 || o == btnEspacio14 || o == btnEspacio15) {
+			
 			configuracionAula((String)((JButton)o).getText());
+		}
+		else if(o == btnCambiarEstado) {
+			cambiarEstado((String)((JButton)o).getText());
 		}
 		
 	}
 
 
 	private void configuracionInicio() {
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ik_2dm3\\Desktop\\Proyecto 0\\logo.png"));
 		setTitle("FP Txurdinaga");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -163,6 +168,7 @@ public class Index extends JFrame implements ActionListener {
 		pnInicio.setLayout(null);
 		
 		btnAlarma = new JButton("Alarma");
+		btnAlarma.addActionListener(this);
 		btnAlarma.setBackground(new Color(135, 206, 250));
 		btnAlarma.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		btnAlarma.addActionListener(new ActionListener() {
@@ -173,6 +179,7 @@ public class Index extends JFrame implements ActionListener {
 		pnInicio.add(btnAlarma);
 		
 		btnCalefaccion = new JButton("Calefacci\u00F3n");
+		btnCalefaccion.addActionListener(this);
 		btnCalefaccion.setBackground(new Color(0, 255, 127));
 		btnCalefaccion.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnCalefaccion.setBounds(28, 234, 198, 68);
@@ -194,44 +201,43 @@ public class Index extends JFrame implements ActionListener {
 		pnMenuPlanta.add(lblOpcionElegidaPlanta);
 		
 		btnPlanta1 = new JButton("Planta 1");
+		btnPlanta1.addActionListener(this);
 		btnPlanta1.setBackground(new Color(255, 0, 0));
 		btnPlanta1.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnPlanta1.setBounds(39, 116, 190, 59);
 		pnMenuPlanta.add(btnPlanta1);
 		
 		btnPlanta2 = new JButton("Planta 2");
+		btnPlanta2.addActionListener(this);
 		btnPlanta2.setBackground(new Color(138, 43, 226));
 		btnPlanta2.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnPlanta2.setBounds(39, 192, 190, 59);
 		pnMenuPlanta.add(btnPlanta2);
 		
 		btnPlanta3 = new JButton("Planta 3");
+		btnPlanta3.addActionListener(this);
 		btnPlanta3.setBackground(new Color(34, 139, 34));
-		btnPlanta3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnPlanta3.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnPlanta3.setBounds(39, 262, 190, 59);
 		pnMenuPlanta.add(btnPlanta3);
 		
 		btnHomePlantas = new JButton("");
+		btnHomePlantas.addActionListener(this);
 		btnHomePlantas.setIcon(new ImageIcon(Index.class.getResource("/Imagenes/home.png")));
 		btnHomePlantas.setBorder(null);
 		btnHomePlantas.setBackground(SystemColor.menu);
 		btnHomePlantas.setBounds(10, 11, 39, 39);
 		pnMenuPlanta.add(btnHomePlantas);
+		
 		pnMenuAulas.setBounds(0, 0, 258, 392);
 		contentPane.add(pnMenuAulas);
 		pnMenuAulas.setLayout(null);
 		
 		btnAtrasAulas = new JButton("");
+		btnAtrasAulas.addActionListener(this);
 		btnAtrasAulas.setBorder(null);
 		btnAtrasAulas.setBackground(new Color(240,240,240));
-		btnAtrasAulas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+	
 		btnAtrasAulas.setIcon(new ImageIcon(Index.class.getResource("/Imagenes/Atras.png")));
 		btnAtrasAulas.setBounds(209, 11, 39, 39);
 		pnMenuAulas.add(btnAtrasAulas);
@@ -254,15 +260,18 @@ public class Index extends JFrame implements ActionListener {
 		pnMenuAulas.add(pnSelecAula);
 		pnSelecAula.setLayout(null);
 		
-		btnEspacio1 = new JButton("Aula 101");
+		btnEspacio1 = new JButton("");
+		btnEspacio1.addActionListener(this);
 		btnEspacio1.setBounds(0, 0, 75, 50);
 		pnSelecAula.add(btnEspacio1);
 		
-		btnEspacio2 = new JButton("Aula 101");
+		btnEspacio2 = new JButton("");
+		btnEspacio2.addActionListener(this);
 		btnEspacio2.setBounds(85, 0, 75, 50);
 		pnSelecAula.add(btnEspacio2);
 		
-		btnEspacio3 = new JButton("Aula 101");
+		btnEspacio3 = new JButton("");
+		btnEspacio3.addActionListener(this);
 		btnEspacio3.setBounds(170, 0, 75, 50);
 		pnSelecAula.add(btnEspacio3);
 		
@@ -384,7 +393,11 @@ public class Index extends JFrame implements ActionListener {
 	}
 	
 	private void configuracionAula(String cod) {
-		BBDD.cargarDatoAula(cod);
-		
+		BBDD.cargarDatoAula(cod);	
+	}
+	
+	private void cambiarEstado(String codAula) {
+		BBDD.actualizarEstado(codAula, opSeleccionada);
+		configuracionAulasAtras();
 	}
 }

@@ -12,4 +12,9 @@ public class BD {
 		
 	}
 
+	public void actualizarEstado(String codAula, String opSeleccionada) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
