@@ -6,6 +6,7 @@ public class Aula{
 	private String EstadoCalefaccion;
 	private String EstadoAlarma;
 	
+	//Constructora
 	Aula(){
 		this.nAula = "";
 		this.EstadoAlarma = "";
