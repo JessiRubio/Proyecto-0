@@ -13,9 +13,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
-import javax.swing.JToggleButton;
 import java.awt.SystemColor;
 
 public class Index extends JFrame implements ActionListener {
@@ -115,15 +113,27 @@ public class Index extends JFrame implements ActionListener {
 		}
 		else if(o ==btnPlanta1) {
 			BBDD.cargarDatosPlanta("p1");
-			configuracionAulas();
+			configuracionMenuAulas();
 		}
 		else if(o ==btnPlanta2) {
 			BBDD.cargarDatosPlanta("p2");
-			configuracionAulas();
+			configuracionMenuAulas();
 		}
 		else if(o ==btnPlanta3) {
 			BBDD.cargarDatosPlanta("p3");
-			configuracionAulas();
+			configuracionMenuAulas();
+		}
+		else if (o == btnAtrasAulaSeleccionada) {
+			configuracionAulasAtras();
+		}
+		else if(o == btnAtrasAulas) {
+			configuracionPlanta();
+		}
+		else if(o == btnEspacio1 || o == btnEspacio2 || o == btnEspacio3 || o == btnEspacio4 
+				|| o == btnEspacio5 || o == btnEspacio6 || o == btnEspacio7 || o == btnEspacio8
+				|| o == btnEspacio9 || o == btnEspacio10 || o == btnEspacio11 || o == btnEspacio12
+				|| o == btnEspacio13 || o == btnEspacio14 || o == btnEspacio15) {
+			configuracionAula((String)((JButton)o).getText());
 		}
 		
 	}
@@ -350,7 +360,6 @@ public class Index extends JFrame implements ActionListener {
 		
 	}
 	
-	
 	private void configuracionPlanta() {
 		pnInicio.setVisible(false);
 		pnMenuPlanta.setVisible(true);
@@ -359,7 +368,7 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.setVisible(false);	
 	}
 	
-	private void configuracionAulas() {
+	private void configuracionMenuAulas() {
 		pnInicio.setVisible(false);
 		pnMenuPlanta.setVisible(false);
 		pnMenuAulas.setVisible(true);
@@ -367,6 +376,15 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.setVisible(false);
 	}
 	
+	private void configuracionAulasAtras() {
+		pnInicio.setVisible(false);
+		pnMenuPlanta.setVisible(false);
+		pnMenuAulas.setVisible(true);
+		pnAula.setVisible(false);
+	}
 	
-	
+	private void configuracionAula(String cod) {
+		BBDD.cargarDatoAula(cod);
+		
+	}
 }

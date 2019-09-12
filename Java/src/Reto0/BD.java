@@ -7,4 +7,9 @@ public class BD {
 		
 	}
 
+	public void cargarDatoAula(String cod) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
