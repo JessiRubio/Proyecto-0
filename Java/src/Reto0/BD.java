@@ -41,4 +41,9 @@ public class BD {
 		return false;
 	}
 
+	public boolean consultarAula() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

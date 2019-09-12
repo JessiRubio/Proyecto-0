@@ -1,18 +1,23 @@
 package Reto0;
 
-public class Aula{
+import java.io.Serializable;
 
-	private int nAula;
+public class Aula implements Comparable<Aula>, Serializable{
+
+	
+	private static final long serialVersionUID = 1L;
+	private String nAula;
 	private String EstadoCalefaccion;
 	private String EstadoAlarma;
 	
+	//Constructora
 	Aula(){
-		this.nAula = 0;
+		this.nAula = "";
 		this.EstadoAlarma = "";
 		this.EstadoCalefaccion = "";
 	}
 	
-	Aula(int nAula, String EstadoAlarma, String EstadoCalefaccion){
+	Aula(String nAula, String EstadoAlarma, String EstadoCalefaccion){
 		this.nAula = nAula;
 		this.EstadoAlarma = EstadoAlarma;
 		this.EstadoCalefaccion = EstadoCalefaccion;
@@ -24,11 +29,11 @@ public class Aula{
 		this.EstadoCalefaccion = A.EstadoCalefaccion;
 	}
 
-	public int getnAula() {
+	public String getnAula() {
 		return nAula;
 	}
 
-	public void setnAula(int nAula) {
+	public void setnAula(String nAula) {
 		this.nAula = nAula;
 	}
 
@@ -48,14 +53,13 @@ public class Aula{
 		EstadoAlarma = estadoAlarma;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((EstadoAlarma == null) ? 0 : EstadoAlarma.hashCode());
 		result = prime * result + ((EstadoCalefaccion == null) ? 0 : EstadoCalefaccion.hashCode());
-		result = prime * result + nAula;
+		result = prime * result + ((nAula == null) ? 0 : nAula.hashCode());
 		return result;
 	}
 
@@ -78,16 +82,27 @@ public class Aula{
 				return false;
 		} else if (!EstadoCalefaccion.equals(other.EstadoCalefaccion))
 			return false;
-		if (nAula != other.nAula)
+		if (nAula == null) {
+			if (other.nAula != null)
+				return false;
+		} else if (!nAula.equals(other.nAula))
 			return false;
 		return true;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Aula [nAula=" + nAula + ", EstadoCalefaccion=" + EstadoCalefaccion + ", EstadoAlarma=" + EstadoAlarma
 				+ "]";
+	}
+
+	@Override
+	public int compareTo(Aula A) {
+		String n1,n2;
+		n1 = this.nAula;
+		n2 = A.nAula ;
+		
+		return n1.compareTo(n2);
 	}
 
 }

@@ -113,7 +113,7 @@ public class Index extends JFrame implements ActionListener {
 			configuracionPlanta();
 		}
 		else if (o == btnHomeAulaSeleccionada || o == btnHomeMenuAulas || o == btnHomePlantas) {
-			configuracionInicio();
+			home();
 		}
 		else if(o ==btnPlanta1) {
 			BBDD.cargarDatosPlanta("p1");
@@ -201,7 +201,7 @@ public class Index extends JFrame implements ActionListener {
 		lblOpcionElegidaPlanta = new JLabel("Alarma");
 		lblOpcionElegidaPlanta.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblOpcionElegidaPlanta.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOpcionElegidaPlanta.setBounds(39, 30, 161, 35);
+		lblOpcionElegidaPlanta.setBounds(54, 30, 157, 35);
 		pnMenuPlanta.add(lblOpcionElegidaPlanta);
 		
 		btnPlanta1 = new JButton("Planta 1");
@@ -279,55 +279,68 @@ public class Index extends JFrame implements ActionListener {
 		btnEspacio3.setBounds(170, 0, 75, 50);
 		pnSelecAula.add(btnEspacio3);
 		
-		btnEspacio4 = new JButton("Aula 101");
+		btnEspacio4 = new JButton("");
+		btnEspacio4.addActionListener(this);
 		btnEspacio4.setBounds(0, 64, 75, 50);
 		pnSelecAula.add(btnEspacio4);
 		
-		btnEspacio5 = new JButton("Aula 101");
+		btnEspacio5 = new JButton("");
+		btnEspacio5.addActionListener(this);
 		btnEspacio5.setBounds(85, 64, 75, 50);
 		pnSelecAula.add(btnEspacio5);
 		
-		btnEspacio6 = new JButton("Aula 101");
+		btnEspacio6 = new JButton("");
+		btnEspacio6.addActionListener(this);
 		btnEspacio6.setBounds(170, 64, 75, 50);
 		pnSelecAula.add(btnEspacio6);
 		
-		btnEspacio7 = new JButton("Aula 101");
+		btnEspacio7 = new JButton("");
+		btnEspacio7.addActionListener(this);
 		btnEspacio7.setBounds(0, 125, 75, 50);
 		pnSelecAula.add(btnEspacio7);
 		
-		btnEspacio8 = new JButton("Aula 101");
+		btnEspacio8 = new JButton("");
+		btnEspacio8.addActionListener(this);
 		btnEspacio8.setBounds(85, 125, 75, 50);
 		pnSelecAula.add(btnEspacio8);
 		
-		btnEspacio9 = new JButton("Aula 101");
+		btnEspacio9 = new JButton("");
+		btnEspacio9.addActionListener(this);
 		btnEspacio9.setBounds(170, 125, 75, 50);
 		pnSelecAula.add(btnEspacio9);
 		
-		btnEspacio10 = new JButton("Aula 101");
+		btnEspacio10 = new JButton("");
+		btnEspacio10.addActionListener(this);
 		btnEspacio10.setBounds(0, 186, 75, 50);
 		pnSelecAula.add(btnEspacio10);
 		
-		btnEspacio11 = new JButton("Aula 101");
+		btnEspacio11 = new JButton("");
+		btnEspacio11.addActionListener(this);
 		btnEspacio11.setBounds(85, 186, 75, 50);
 		pnSelecAula.add(btnEspacio11);
 		
-		btnEspacio12 = new JButton("Aula 101");
+		btnEspacio12 = new JButton("");
+		btnEspacio12.addActionListener(this);
 		btnEspacio12.setBounds(170, 186, 75, 50);
 		pnSelecAula.add(btnEspacio12);
 		
-		btnEspacio13 = new JButton("Aula 101");
+		btnEspacio13 = new JButton("");
+		btnEspacio13.addActionListener(this);
 		btnEspacio13.setBounds(0, 250, 75, 50);
 		pnSelecAula.add(btnEspacio13);
 		
-		btnEspacio14 = new JButton("Aula 101");
+		btnEspacio14 = new JButton("");
+		btnEspacio14.addActionListener(this);
 		btnEspacio14.setBounds(85, 250, 75, 50);
 		pnSelecAula.add(btnEspacio14);
 		
-		btnEspacio15 = new JButton("Aula 101");
+		btnEspacio15 = new JButton("");
+		btnEspacio15.addActionListener(this);
 		btnEspacio15.setBounds(170, 250, 75, 50);
 		pnSelecAula.add(btnEspacio15);
 		
 		btnHomeMenuAulas = new JButton("");
+		btnHomeMenuAulas.addActionListener(this);
 		btnHomeMenuAulas.setIcon(new ImageIcon(Index.class.getResource("/Imagenes/home.png")));
 		btnHomeMenuAulas.setBorder(null);
 		btnHomeMenuAulas.setBackground(SystemColor.menu);
@@ -347,6 +360,7 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.add(lblAulaSeleccionada);
 		
 		btnAtrasAulaSeleccionada = new JButton("");
+		btnAtrasAulaSeleccionada.addActionListener(this);
 		btnAtrasAulaSeleccionada.setBorder(null);
 		btnAtrasAulaSeleccionada.setIcon(new ImageIcon(Index.class.getResource("/Imagenes/Atras.png")));
 		btnAtrasAulaSeleccionada.setBackground(SystemColor.menu);
@@ -360,6 +374,7 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.add(lblEstado);
 		
 		btnHomeAulaSeleccionada = new JButton("");
+		btnHomeAulaSeleccionada.addActionListener(this);
 		btnHomeAulaSeleccionada.setBorder(null);
 		btnHomeAulaSeleccionada.setIcon(new ImageIcon(Index.class.getResource("/Imagenes/home.png")));
 		btnHomeAulaSeleccionada.setBackground(SystemColor.menu);
@@ -367,10 +382,18 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.add(btnHomeAulaSeleccionada);
 		
 		btnCambiarEstado = new JButton("On");
+		btnCambiarEstado.addActionListener(this);
 		btnCambiarEstado.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnCambiarEstado.setBounds(54, 248, 155, 39);
 		pnAula.add(btnCambiarEstado);
 		
+	}
+
+	private void home() {
+		pnInicio.setVisible(true);
+		pnMenuPlanta.setVisible(false);
+		pnMenuAulas.setVisible(false);
+		pnAula.setVisible(false);	
 	}
 	
 
@@ -405,5 +428,11 @@ public class Index extends JFrame implements ActionListener {
 	private void cambiarEstado(String codAula) {
 		BBDD.actualizarEstado(codAula, opSeleccionada);
 		configuracionAulasAtras();
+		if(BBDD.consultarAula()) {
+			lblEstado.setBackground(Color.green);
+		}
+		else {
+			lblEstado.setBackground(Color.red);
+		}
 	}
 }
