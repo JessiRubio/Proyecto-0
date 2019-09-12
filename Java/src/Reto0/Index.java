@@ -78,7 +78,7 @@ public class Index extends JFrame implements ActionListener {
 	// Base de datos
 	private BD BBDD;
 	
-	/**
+	/** 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
