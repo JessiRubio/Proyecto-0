@@ -19,7 +19,7 @@ public class BD {
 			System.out.println("Error al conectar");
 			e.printStackTrace();
 		}
-	}
+	} 
 	
 	public void cargarDatosPlanta(String string) {
 		// TODO Auto-generated method stub
