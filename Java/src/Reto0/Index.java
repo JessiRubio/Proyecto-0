@@ -75,7 +75,7 @@ public class Index extends JFrame implements ActionListener {
 	// Base de datos
 	private BD BBDD;
 	
-	/**
+	/** 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -97,6 +97,7 @@ public class Index extends JFrame implements ActionListener {
 	public Index() {
 		
 		configuracionInicio();
+		BD.conectarBD();
 		
 	}
 
@@ -391,6 +392,8 @@ public class Index extends JFrame implements ActionListener {
 		pnMenuAulas.setVisible(false);
 		pnAula.setVisible(false);	
 	}
+	
+
 	
 	private void configuracionPlanta() {
 		pnInicio.setVisible(false);
