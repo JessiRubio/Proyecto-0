@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -97,6 +100,7 @@ public class Index extends JFrame implements ActionListener {
 	public Index() {
 		
 		configuracionInicio();
+		BD.conectarBD();
 		
 	}
 
@@ -368,6 +372,8 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.add(btnCambiarEstado);
 		
 	}
+	
+
 	
 	private void configuracionPlanta() {
 		pnInicio.setVisible(false);
