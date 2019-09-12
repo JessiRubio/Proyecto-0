@@ -1,7 +1,11 @@
 package Reto0;
 
-public class Aula{
+import java.io.Serializable;
 
+public class Aula implements Comparable<Aula>, Serializable{
+
+	
+	private static final long serialVersionUID = 1L;
 	private String nAula;
 	private String EstadoCalefaccion;
 	private String EstadoAlarma;
@@ -90,6 +94,15 @@ public class Aula{
 	public String toString() {
 		return "Aula [nAula=" + nAula + ", EstadoCalefaccion=" + EstadoCalefaccion + ", EstadoAlarma=" + EstadoAlarma
 				+ "]";
+	}
+
+	@Override
+	public int compareTo(Aula A) {
+		String n1,n2;
+		n1 = this.nAula;
+		n2 = A.nAula ;
+		
+		return n1.compareTo(n2);
 	}
 
 }
