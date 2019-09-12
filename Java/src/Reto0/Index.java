@@ -422,5 +422,11 @@ public class Index extends JFrame implements ActionListener {
 	private void cambiarEstado(String codAula) {
 		BBDD.actualizarEstado(codAula, opSeleccionada);
 		configuracionAulasAtras();
+		if(BBDD.consultarAula()) {
+			lblEstado.setBackground(Color.green);
+		}
+		else {
+			lblEstado.setBackground(Color.red);
+		}
 	}
 }
