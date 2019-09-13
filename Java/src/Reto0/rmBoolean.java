@@ -6,6 +6,7 @@ public class rmBoolean {
 	
 	private boolean bool;
 
+	//  Estado aleatorio 0 o 1
 	public rmBoolean() {
 		Random rnd = new Random();
 		int numero = rnd.nextInt(2);

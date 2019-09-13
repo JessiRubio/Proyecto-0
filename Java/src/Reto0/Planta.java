@@ -10,16 +10,11 @@ public class Planta implements Comparable<Planta>, Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-
-	private String nPlanta;
-
 	
 	// VARIABLES
-	
-
+	private String nPlanta;
 
 	private ArrayList<Aula> aulas;
-	
 	
 	// CONSTRUCTOR POR DEFECTO
 	
@@ -28,7 +23,8 @@ public class Planta implements Comparable<Planta>, Serializable{
 		this.aulas = new ArrayList<Aula>();
 	}
 
-
+	//GET nPlanta
+	
 	public String getnPlanta() {
 
 		return nPlanta;

@@ -12,6 +12,7 @@ public class BD {
 	private static Connection conectar;
 	private Planta p;
 
+	// 
 	public static void conectarBD() {
 
 		try {
@@ -27,6 +28,7 @@ public class BD {
 
 	}
 
+	// Carga los datos de la planta 
 	public void cargarDatosPlanta(String pselec) {
 
 		try {
@@ -54,6 +56,7 @@ public class BD {
 
 	}
 
+	// Carga los datos de la aula seleccionada
 	public Aula cargarDatoAula(String cod) {
 
 		try {
@@ -89,6 +92,7 @@ public class BD {
 
 	}
 
+	// Actualiza el estado de la calefaccion o alarma de la aula seleccionada
 	public void actualizarEstado(String codAula, String opSeleccionada) {
 
 		try {
