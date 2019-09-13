@@ -8,6 +8,12 @@ import java.io.Serializable;
 public class Aula implements Comparable<Aula>, Serializable{
 	
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
+	private static String nAula;
+	private String EstadoCalefaccion;
+	private String EstadoAlarma;
+=======
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 	
 	// VARIABLES
 	
@@ -33,10 +39,14 @@ public class Aula implements Comparable<Aula>, Serializable{
 		this.EstadoCalefaccion = EstadoCalefaccion;
 	}
 
+<<<<<<< HEAD
+	public static String getnAula() {
+=======
 	
 	// GET nAula
 	
 	public String getnAula() {
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 		return nAula;
 	}
 

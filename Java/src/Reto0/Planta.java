@@ -10,10 +10,14 @@ public class Planta implements Comparable<Planta>, Serializable{
 
 
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
+	private static String nPlanta;
+=======
 	
 	// VARIABLES
 	
 	private String nPlanta;
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 	private ArrayList<Aula> aulas;
 	
 	
@@ -24,10 +28,14 @@ public class Planta implements Comparable<Planta>, Serializable{
 		this.aulas = new ArrayList<Aula>();
 	}
 
+<<<<<<< HEAD
+	public static String getnPlanta() {
+=======
 	
 	// GET nPlanta
 	
 	public String getnPlanta() {
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 		return nPlanta;
 	}
 

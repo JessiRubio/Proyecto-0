@@ -425,7 +425,16 @@ public class Index extends JFrame implements ActionListener {
 		Aula a = BBDD.cargarDatoAula(cod);
 		if(opSeleccionada == btnAlarma.getText()) {
 			if(a.getEstadoAlarma()) {
-				
+				lblEstado.setBackground(Color.green);
+				btnCambiarEstado.setText("OFF");
+			}
+			else if(!a.getEstadoAlarma()){
+				lblEstado.setBackground(Color.red);
+				btnCambiarEstado.setText("ON");
+			}
+			else {
+				lblEstado.setBackground(Color.cyan);
+				btnCambiarEstado.setText("ON");
 			}
 		}
 		else if(opSeleccionada == btnCalefaccion.getText()) {
