@@ -143,7 +143,7 @@ public class Index extends JFrame implements ActionListener {
 		
 	}
 
-
+	//Metodo que genera todo lo necesario para la interfaz cuando abrimos el programa.
 	private void configuracionInicio() {
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ik_2dm3\\Desktop\\Proyecto 0\\logo.png"));
@@ -386,6 +386,7 @@ public class Index extends JFrame implements ActionListener {
 		
 	}
 
+	//Metodo que te devuelve a la pantalla inicial.
 	private void home() {
 		pnInicio.setVisible(true);
 		pnMenuPlanta.setVisible(false);
@@ -393,8 +394,7 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.setVisible(false);	
 	}
 	
-
-	
+	//Metodo que configura la pantalla de selección de planta
 	private void configuracionPlanta() {
 		pnInicio.setVisible(false);
 		pnMenuPlanta.setVisible(true);
@@ -403,6 +403,7 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.setVisible(false);	
 	}
 	
+	//Metodo que te muestra el plano de las aulas tras seleccionar una planta
 	private void configuracionMenuAulas() {
 		pnInicio.setVisible(false);
 		pnMenuPlanta.setVisible(false);
@@ -411,6 +412,7 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.setVisible(false);
 	}
 	
+	//Metodo que permite volver al menu de las plantas
 	private void configuracionAulasAtras() {
 		pnInicio.setVisible(false);
 		pnMenuPlanta.setVisible(false);
@@ -418,10 +420,20 @@ public class Index extends JFrame implements ActionListener {
 		pnAula.setVisible(false);
 	}
 	
+	//Metodo que carga la información del aula desde la base de datos
 	private void configuracionAula(String cod) {
-		BBDD.cargarDatoAula(cod);	
+		Aula a = BBDD.cargarDatoAula(cod);
+		if(opSeleccionada == btnAlarma.getText()) {
+			if(a.getEstadoAlarma()) {
+				
+			}
+		}
+		else if(opSeleccionada == btnCalefaccion.getText()) {
+			
+		}
 	}
 	
+	//Metodo que actualiza el estado de un aula si es modificada
 	private void cambiarEstado(String codAula) {
 		BBDD.actualizarEstado(codAula, opSeleccionada);
 		configuracionAulasAtras();

@@ -12,22 +12,22 @@ public class Aula implements Comparable<Aula>, Serializable{
 	// VARIABLES
 	
 	private String nAula;
-	private String EstadoCalefaccion;
-	private String EstadoAlarma;
+	private boolean EstadoCalefaccion;
+	private boolean EstadoAlarma;
 	
 	
 	//CONSTRUCTOR POR DEFECTO
 	
 	Aula(){
 		this.nAula = "";
-		this.EstadoAlarma = "";
-		this.EstadoCalefaccion = "";
+		this.EstadoAlarma = new rmBoolean().getBool();
+		this.EstadoCalefaccion = false;
 	}
 	
 	
 	// CONSTRUCTOR
 	
-	Aula(String nAula, String EstadoAlarma, String EstadoCalefaccion){
+	Aula(String nAula, boolean EstadoAlarma, boolean EstadoCalefaccion){
 		this.nAula = nAula;
 		this.EstadoAlarma = EstadoAlarma;
 		this.EstadoCalefaccion = EstadoCalefaccion;
@@ -51,28 +51,28 @@ public class Aula implements Comparable<Aula>, Serializable{
 	
 	// GET EstadoCalefaccion
 	
-	public String getEstadoCalefaccion() {
+	public boolean getEstadoCalefaccion() {
 		return EstadoCalefaccion;
 	}
 
 	
 	// SET EstadoCalefaccion
 	
-	public void setEstadoCalefaccion(String estadoCalefaccion) {
+	public void setEstadoCalefaccion(boolean estadoCalefaccion) {
 		EstadoCalefaccion = estadoCalefaccion;
 	}
 
 	
 	// GER EstadoAlarma
 	
-	public String getEstadoAlarma() {
+	public boolean getEstadoAlarma() {
 		return EstadoAlarma;
 	}
 
 	
 	// SET EstadoAlarma
 	
-	public void setEstadoAlarma(String estadoAlarma) {
+	public void setEstadoAlarma(boolean estadoAlarma) {
 		EstadoAlarma = estadoAlarma;
 	}
 
@@ -83,8 +83,8 @@ public class Aula implements Comparable<Aula>, Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((EstadoAlarma == null) ? 0 : EstadoAlarma.hashCode());
-		result = prime * result + ((EstadoCalefaccion == null) ? 0 : EstadoCalefaccion.hashCode());
+		result = prime * result + (EstadoAlarma ? 1231 : 1237);
+		result = prime * result + (EstadoCalefaccion ? 1231 : 1237);
 		result = prime * result + ((nAula == null) ? 0 : nAula.hashCode());
 		return result;
 	}
@@ -101,15 +101,9 @@ public class Aula implements Comparable<Aula>, Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Aula other = (Aula) obj;
-		if (EstadoAlarma == null) {
-			if (other.EstadoAlarma != null)
-				return false;
-		} else if (!EstadoAlarma.equals(other.EstadoAlarma))
+		if (EstadoAlarma != other.EstadoAlarma)
 			return false;
-		if (EstadoCalefaccion == null) {
-			if (other.EstadoCalefaccion != null)
-				return false;
-		} else if (!EstadoCalefaccion.equals(other.EstadoCalefaccion))
+		if (EstadoCalefaccion != other.EstadoCalefaccion)
 			return false;
 		if (nAula == null) {
 			if (other.nAula != null)
