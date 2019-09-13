@@ -72,8 +72,9 @@ public class BD {
 		
 	}
 
-	public void cargarDatoAula(String cod) {
+	public Aula cargarDatoAula(String cod) {
 		// TODO Auto-generated method stub
+
 		
 		try{
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/reto0"
@@ -90,8 +91,8 @@ public class BD {
 				Aula da =new Aula();
 			
 				da.setnAula(rs.getString("nAula"));
-				da.setEstadoAlarma(rs.getString("EstadoAlarma")); 
-				da.setEstadoCalefaccion(rs.getString("EstadoCalefaccion"));
+				da.setEstadoAlarma(rs.getBoolean("EstadoAlarma")); 
+				da.setEstadoCalefaccion(rs.getBoolean("EstadoCalefaccion"));
 				datosAulas.add(da);
 				
 				}
@@ -105,6 +106,9 @@ public class BD {
 			sqle.printStackTrace();
 			System.out.println("error");
 		}
+
+		return new Aula();
+
 	}
 
 	public void actualizarEstado(String codAula, String opSeleccionada) {

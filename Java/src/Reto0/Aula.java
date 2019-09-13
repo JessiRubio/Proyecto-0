@@ -2,60 +2,105 @@ package Reto0;
 
 import java.io.Serializable;
 
-public class Aula implements Comparable<Aula>, Serializable{
 
+// CLASE AULA
+
+public class Aula implements Comparable<Aula>, Serializable{
 	
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
 	private static String nAula;
 	private String EstadoCalefaccion;
 	private String EstadoAlarma;
+=======
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 	
-	//Constructora
+	// VARIABLES
+	
+	private String nAula;
+	private boolean EstadoCalefaccion;
+	private boolean EstadoAlarma;
+	
+	
+	//CONSTRUCTOR POR DEFECTO
+	
 	Aula(){
 		this.nAula = "";
-		this.EstadoAlarma = "";
-		this.EstadoCalefaccion = "";
+		this.EstadoAlarma = new rmBoolean().getBool();
+		this.EstadoCalefaccion = false;
 	}
 	
-	Aula(String nAula, String EstadoAlarma, String EstadoCalefaccion){
+	
+	// CONSTRUCTOR
+	
+	Aula(String nAula, boolean EstadoAlarma, boolean EstadoCalefaccion){
 		this.nAula = nAula;
 		this.EstadoAlarma = EstadoAlarma;
 		this.EstadoCalefaccion = EstadoCalefaccion;
 	}
 
+<<<<<<< HEAD
 	public static String getnAula() {
+=======
+	
+	// GET nAula
+	
+	public String getnAula() {
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 		return nAula;
 	}
 
+	
+	
+	// SET nAula
+	
 	public void setnAula(String nAula) {
 		this.nAula = nAula;
 	}
 
-	public String getEstadoCalefaccion() {
+	
+	// GET EstadoCalefaccion
+	
+	public boolean getEstadoCalefaccion() {
 		return EstadoCalefaccion;
 	}
 
-	public void setEstadoCalefaccion(String estadoCalefaccion) {
+	
+	// SET EstadoCalefaccion
+	
+	public void setEstadoCalefaccion(boolean estadoCalefaccion) {
 		EstadoCalefaccion = estadoCalefaccion;
 	}
 
-	public String getEstadoAlarma() {
+	
+	// GER EstadoAlarma
+	
+	public boolean getEstadoAlarma() {
 		return EstadoAlarma;
 	}
 
-	public void setEstadoAlarma(String estadoAlarma) {
+	
+	// SET EstadoAlarma
+	
+	public void setEstadoAlarma(boolean estadoAlarma) {
 		EstadoAlarma = estadoAlarma;
 	}
 
+	
+	// HASHCODE
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((EstadoAlarma == null) ? 0 : EstadoAlarma.hashCode());
-		result = prime * result + ((EstadoCalefaccion == null) ? 0 : EstadoCalefaccion.hashCode());
+		result = prime * result + (EstadoAlarma ? 1231 : 1237);
+		result = prime * result + (EstadoCalefaccion ? 1231 : 1237);
 		result = prime * result + ((nAula == null) ? 0 : nAula.hashCode());
 		return result;
 	}
+	
+	
+	// EQUALS
 
 	@Override
 	public boolean equals(Object obj) {
@@ -66,15 +111,9 @@ public class Aula implements Comparable<Aula>, Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Aula other = (Aula) obj;
-		if (EstadoAlarma == null) {
-			if (other.EstadoAlarma != null)
-				return false;
-		} else if (!EstadoAlarma.equals(other.EstadoAlarma))
+		if (EstadoAlarma != other.EstadoAlarma)
 			return false;
-		if (EstadoCalefaccion == null) {
-			if (other.EstadoCalefaccion != null)
-				return false;
-		} else if (!EstadoCalefaccion.equals(other.EstadoCalefaccion))
+		if (EstadoCalefaccion != other.EstadoCalefaccion)
 			return false;
 		if (nAula == null) {
 			if (other.nAula != null)
@@ -84,12 +123,18 @@ public class Aula implements Comparable<Aula>, Serializable{
 		return true;
 	}
 
+	
+	// TO STRING
+	
 	@Override
 	public String toString() {
 		return "Aula [nAula=" + nAula + ", EstadoCalefaccion=" + EstadoCalefaccion + ", EstadoAlarma=" + EstadoAlarma
 				+ "]";
 	}
 
+	
+	// COMPARE TO
+	
 	@Override
 	public int compareTo(Aula A) {
 		String n1,n2;

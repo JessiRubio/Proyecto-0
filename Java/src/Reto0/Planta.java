@@ -3,33 +3,65 @@ package Reto0;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
+// CLASE PLANTA
+
 public class Planta implements Comparable<Planta>, Serializable{
 
 
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
 	private static String nPlanta;
+=======
+	
+	// VARIABLES
+	
+	private String nPlanta;
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 	private ArrayList<Aula> aulas;
+	
+	
+	// CONSTRUCTOR POR DEFECTO
 	
 	Planta(){
 		this.nPlanta = "";
 		this.aulas = new ArrayList<Aula>();
 	}
 
+<<<<<<< HEAD
 	public static String getnPlanta() {
+=======
+	
+	// GET nPlanta
+	
+	public String getnPlanta() {
+>>>>>>> branch 'master' of https://github.com/JessiRubio/Proyecto-0
 		return nPlanta;
 	}
 
+	
+	// SET nPlanta
+	
 	public void setnPlanta(String nPlanta) {
 		this.nPlanta = nPlanta;
 	}
 
+	
+	// GET Aulas
+	
 	public ArrayList<Aula> getAulas() {
 		return aulas;
 	}
 
+	
+	// SET Aulas
+	
 	public void setAulas(ArrayList<Aula> aulas) {
 		this.aulas = aulas;
 	}
+	
+	
+	// HASHCODE
 
 	@Override
 	public int hashCode() {
@@ -40,6 +72,9 @@ public class Planta implements Comparable<Planta>, Serializable{
 		return result;
 	}
 
+	
+	// EQUALS
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -62,11 +97,17 @@ public class Planta implements Comparable<Planta>, Serializable{
 		return true;
 	}
 
+	
+	// TO STRING
+	
 	@Override
 	public String toString() {
 		return "Planta [nPlanta=" + nPlanta + ", aulas=" + aulas + "]";
 	}
 
+	
+	// COMPARE TO
+	
 	@Override
 	public int compareTo(Planta A) {
 		String n1,n2;
