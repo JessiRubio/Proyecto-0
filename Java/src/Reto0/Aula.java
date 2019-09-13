@@ -2,20 +2,30 @@ package Reto0;
 
 import java.io.Serializable;
 
-public class Aula implements Comparable<Aula>, Serializable{
 
+// CLASE AULA
+
+public class Aula implements Comparable<Aula>, Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
+	// VARIABLES
+	
 	private String nAula;
 	private String EstadoCalefaccion;
 	private String EstadoAlarma;
 	
-	//Constructora
+	
+	//CONSTRUCTOR POR DEFECTO
+	
 	Aula(){
 		this.nAula = "";
 		this.EstadoAlarma = "";
 		this.EstadoCalefaccion = "";
 	}
+	
+	
+	// CONSTRUCTOR
 	
 	Aula(String nAula, String EstadoAlarma, String EstadoCalefaccion){
 		this.nAula = nAula;
@@ -23,30 +33,52 @@ public class Aula implements Comparable<Aula>, Serializable{
 		this.EstadoCalefaccion = EstadoCalefaccion;
 	}
 
+	
+	// GET nAula
+	
 	public String getnAula() {
 		return nAula;
 	}
 
+	
+	
+	// SET nAula
+	
 	public void setnAula(String nAula) {
 		this.nAula = nAula;
 	}
 
+	
+	// GET EstadoCalefaccion
+	
 	public String getEstadoCalefaccion() {
 		return EstadoCalefaccion;
 	}
 
+	
+	// SET EstadoCalefaccion
+	
 	public void setEstadoCalefaccion(String estadoCalefaccion) {
 		EstadoCalefaccion = estadoCalefaccion;
 	}
 
+	
+	// GER EstadoAlarma
+	
 	public String getEstadoAlarma() {
 		return EstadoAlarma;
 	}
 
+	
+	// SET EstadoAlarma
+	
 	public void setEstadoAlarma(String estadoAlarma) {
 		EstadoAlarma = estadoAlarma;
 	}
 
+	
+	// HASHCODE
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -56,6 +88,9 @@ public class Aula implements Comparable<Aula>, Serializable{
 		result = prime * result + ((nAula == null) ? 0 : nAula.hashCode());
 		return result;
 	}
+	
+	
+	// EQUALS
 
 	@Override
 	public boolean equals(Object obj) {
@@ -84,12 +119,18 @@ public class Aula implements Comparable<Aula>, Serializable{
 		return true;
 	}
 
+	
+	// TO STRING
+	
 	@Override
 	public String toString() {
 		return "Aula [nAula=" + nAula + ", EstadoCalefaccion=" + EstadoCalefaccion + ", EstadoAlarma=" + EstadoAlarma
 				+ "]";
 	}
 
+	
+	// COMPARE TO
+	
 	@Override
 	public int compareTo(Aula A) {
 		String n1,n2;
