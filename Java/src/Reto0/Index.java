@@ -113,15 +113,15 @@ public class Index extends JFrame implements ActionListener {
 			home();
 		}
 		else if(o ==btnPlanta1) {
-			BBDD.cargarDatosPlanta("p1");
+			BBDD.cargarDatosPlanta("1");
 			configuracionMenuAulas();
 		}
 		else if(o ==btnPlanta2) {
-			BBDD.cargarDatosPlanta("p2");
+			BBDD.cargarDatosPlanta("2");
 			configuracionMenuAulas();
 		}
 		else if(o ==btnPlanta3) {
-			BBDD.cargarDatosPlanta("p3");
+			BBDD.cargarDatosPlanta("3");
 			configuracionMenuAulas();
 		}
 		else if (o == btnAtrasAulaSeleccionada) {

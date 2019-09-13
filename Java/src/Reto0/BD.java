@@ -36,7 +36,7 @@ public class BD {
 			
 			Statement st = conectar.createStatement();
 			System.out.println(st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "' "));
-			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "' ");
+			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "'");
 			while (rs.next()) {
 
 				p.getAulas().add(new Aula((String) rs.getObject("nAula"), (boolean) rs.getObject("EstadoAlarma"),
