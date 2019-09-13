@@ -35,8 +35,11 @@ public class BD {
 			conectarBD();
 			
 			Statement st = conectar.createStatement();
+
 			System.out.println(st.executeQuery("SELECT * FROM aula WHERE nPlanta='" + pselec + "' "));
 			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nPlanta='1'");
+
+
 			while (rs.next()) {
 				p = new Planta();
 				p.getAulas().add(new Aula((String) rs.getObject("nAula"), (int) rs.getObject("EstadoAlarma"),
