@@ -6,7 +6,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
-	private String nAula;
+	private static String nAula;
 	private String EstadoCalefaccion;
 	private String EstadoAlarma;
 	
@@ -23,7 +23,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 		this.EstadoCalefaccion = EstadoCalefaccion;
 	}
 
-	public String getnAula() {
+	public static String getnAula() {
 		return nAula;
 	}
 

@@ -7,7 +7,7 @@ public class Planta implements Comparable<Planta>, Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-	private String nPlanta;
+	private static String nPlanta;
 	private ArrayList<Aula> aulas;
 	
 	Planta(){
@@ -15,7 +15,7 @@ public class Planta implements Comparable<Planta>, Serializable{
 		this.aulas = new ArrayList<Aula>();
 	}
 
-	public String getnPlanta() {
+	public static String getnPlanta() {
 		return nPlanta;
 	}
 
