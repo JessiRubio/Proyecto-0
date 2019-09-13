@@ -11,7 +11,7 @@ public class Planta implements Comparable<Planta>, Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private static String nPlanta;
+	private String nPlanta;
 
 	
 	// VARIABLES
@@ -29,7 +29,7 @@ public class Planta implements Comparable<Planta>, Serializable{
 	}
 
 
-	public static String getnPlanta() {
+	public String getnPlanta() {
 
 		return nPlanta;
 	}

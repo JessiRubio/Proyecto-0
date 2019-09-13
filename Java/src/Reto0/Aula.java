@@ -9,11 +9,11 @@ public class Aula implements Comparable<Aula>, Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	private static String nAula;
+	
 
 
 	// VARIABLES
-	
+	private String nAula;
 	private boolean EstadoCalefaccion;
 	private boolean EstadoAlarma;
 	
@@ -36,7 +36,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 	}
 
 
-	public static String getnAula() {
+	public String getnAula() {
 
 
 		return nAula;

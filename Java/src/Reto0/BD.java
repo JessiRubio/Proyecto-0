@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class BD {
 	
 	private static Connection conectar;
+	private Planta p;
 	
 	public static void conectarBD() {
 		
@@ -37,7 +38,7 @@ public class BD {
 		
 	} 
 	
-	public void cargarDatosPlanta(String string) {
+	public void cargarDatosPlanta(String pselec) {
 		// TODO Auto-generated method stub
 		
 		
@@ -47,16 +48,11 @@ public class BD {
 					"root", "");
 			Statement st = con.createStatement();	
 			
-			ResultSet rs = st.executeQuery("SELECT nAula FROM aula WHERE nplanta='"+Planta.getnPlanta()+"' ");
-			
-			ArrayList<Aula> aulas=new ArrayList<>();
+			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nplanta='"+ pselec +"' ");
 			
 			while (rs.next()){ 
-				
-				Aula a =new Aula();
-			
-				a.setnAula(rs.getString("nAula")); 
-				aulas.add(a);
+	 
+				p.getAulas().add(new Aula((String)rs.getObject("nAula"),(boolean)rs.getObject("EstadoAlarma"),(boolean)rs.getObject("EstadoCalefaccion")));
 				
 				}
 			
