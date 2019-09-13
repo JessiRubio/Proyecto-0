@@ -22,6 +22,16 @@ public class Planta implements Comparable<Planta>, Serializable{
 		this.nPlanta = "";
 		this.aulas = new ArrayList<Aula>();
 	}
+	
+	Planta(String nPlanta){
+		this.nPlanta = nPlanta;
+		this.aulas = new ArrayList<Aula>();
+	}
+	
+	Planta(Planta P){
+		this.nPlanta = P.nPlanta;
+		this.aulas = P.aulas;
+	}
 
 	//GET nPlanta
 	

@@ -16,7 +16,7 @@ public class BD {
 	public static void conectarBD() {
 
 		try {
-			conectar = DriverManager.getConnection("jdbc:mysql://localhost/proyecto0"
+			conectar = DriverManager.getConnection("jdbc:mysql://localhost/bd"
 					+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					"root", "");
 			System.out.println("Base de datos conectada.");
@@ -35,9 +35,8 @@ public class BD {
 			conectarBD();
 			
 			Statement st = conectar.createStatement();
-
+			System.out.println(st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "' "));
 			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "' ");
-
 			while (rs.next()) {
 
 				p.getAulas().add(new Aula((String) rs.getObject("nAula"), (boolean) rs.getObject("EstadoAlarma"),
