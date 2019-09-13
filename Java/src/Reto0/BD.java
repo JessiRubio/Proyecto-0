@@ -27,10 +27,6 @@ public class BD {
 			System.out.println("Base de datos conectada.");
 			
 			
-			
-			
-			conectar.close();
-			
 		} catch (SQLException e) {
 			System.out.println("Error al conectar");
 			e.printStackTrace();
@@ -73,10 +69,8 @@ public class BD {
 
 		
 		try{
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/reto0"
-					+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", 
-					"root", "");
-			Statement st = con.createStatement();	
+			conectarBD();
+			Statement st = conectar.createStatement();	
 			
 			ResultSet rs = st.executeQuery("SELECT nAula, EstadoAlarma, EstadoCalefaccion from aula where nAula='"+cod+"'");
 			
@@ -95,7 +89,7 @@ public class BD {
 			
 			st.close();	
 			rs.close();
-			con.close();
+			conectar.close();
 			
 			}
 		catch (SQLException sqle){
@@ -108,13 +102,10 @@ public class BD {
 	}
 
 	public void actualizarEstado(String codAula, String opSeleccionada) {
-		// TODO Auto-generated method stub
 		
 		try{
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/reto0"
-					+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", 
-					"root", "");
-			Statement st = con.createStatement();		
+			conectarBD();
+			Statement st = conectar.createStatement();		
 			
 			ResultSet rs = st.executeQuery("SELECT * FROM aula");
 
@@ -131,7 +122,7 @@ public class BD {
 				valorEstado=true;
 			}
 			
-			PreparedStatement prest = con.prepareStatement(Ssql);
+			PreparedStatement prest = conectar.prepareStatement(Ssql);
         
 			prest.setBoolean(1, valorEstado);
 			prest.setString(2, Aula.getnAula());
@@ -143,7 +134,7 @@ public class BD {
 			
 			st.close();	
 			rs.close();
-			con.close();
+			conectar.close();
 			}
 		catch (SQLException sqle){
 			sqle.printStackTrace();
