@@ -12,7 +12,7 @@ public class BD {
 	private static Connection conectar;
 	private Planta p;
 
-	// 
+	// Conexion a la base de datos
 	public static void conectarBD() {
 
 		try {
@@ -32,10 +32,9 @@ public class BD {
 	public void cargarDatosPlanta(String pselec) {
 
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/reto0"
-					+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root", "");
-			Statement st = con.createStatement();
+			conectarBD();
+			
+			Statement st = conectar.createStatement();
 
 			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "' ");
 
@@ -48,7 +47,7 @@ public class BD {
 
 			st.close();
 			rs.close();
-			con.close();
+			conectar.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			System.out.println("error");
