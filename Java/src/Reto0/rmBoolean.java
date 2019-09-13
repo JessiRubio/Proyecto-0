@@ -4,25 +4,21 @@ import java.util.Random;
 
 public class rmBoolean {
 	
-	private boolean bool;
+	private int n;
 
 	//  Estado aleatorio 0 o 1
 	public rmBoolean() {
 		Random rnd = new Random();
-		int numero = rnd.nextInt(2);
-		if (numero == 0) {
-			bool = false;
-		} else if (numero == 1) {
-			bool = true;
-		}
+		n = rnd.nextInt(2);
+		
 	}
 
-	public boolean getBool() {
-		return bool;
+	public int getBool() {
+		return n;
 	}
 
-	public void setBool(boolean bool) {
-		this.bool = bool;
+	public void setBool(int n) {
+		this.n = n;
 	}
 	
 	

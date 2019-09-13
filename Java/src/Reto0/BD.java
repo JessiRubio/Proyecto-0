@@ -35,12 +35,12 @@ public class BD {
 			conectarBD();
 			
 			Statement st = conectar.createStatement();
-			System.out.println(st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "' "));
-			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nplanta='" + pselec + "' ");
+			System.out.println(st.executeQuery("SELECT * FROM aula WHERE nPlanta='" + pselec + "' "));
+			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nPlanta='1'");
 			while (rs.next()) {
-
-				p.getAulas().add(new Aula((String) rs.getObject("nAula"), (boolean) rs.getObject("EstadoAlarma"),
-						(boolean) rs.getObject("EstadoCalefaccion")));
+				p = new Planta();
+				p.getAulas().add(new Aula((String) rs.getObject("nAula"), (int) rs.getObject("EstadoAlarma"),
+						(int) rs.getObject("EstadoCalefaccion")));
 
 			}
 
@@ -71,8 +71,8 @@ public class BD {
 				Aula da = new Aula();
 
 				da.setnAula(rs.getString("nAula"));
-				da.setEstadoAlarma(rs.getBoolean("EstadoAlarma"));
-				da.setEstadoCalefaccion(rs.getBoolean("EstadoCalefaccion"));
+				da.setEstadoAlarma(rs.getInt("EstadoAlarma"));
+				da.setEstadoCalefaccion(rs.getInt("EstadoCalefaccion"));
 				datosAulas.add(da);
 
 			}

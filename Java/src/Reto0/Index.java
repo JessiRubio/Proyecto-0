@@ -97,8 +97,7 @@ public class Index extends JFrame implements ActionListener {
 	public Index() {
 		
 		configuracionInicio();
-		BD.conectarBD();
-		
+		BBDD = new BD();
 	}
 
 	@Override
@@ -117,7 +116,7 @@ public class Index extends JFrame implements ActionListener {
 			configuracionMenuAulas();
 		}
 		else if(o ==btnPlanta2) {
-			BBDD.cargarDatosPlanta("p2");
+			BBDD.cargarDatosPlanta("p2");			
 			configuracionMenuAulas();
 		}
 		else if(o ==btnPlanta3) {
@@ -424,11 +423,11 @@ public class Index extends JFrame implements ActionListener {
 	private void configuracionAula(String cod) {
 		Aula a = BBDD.cargarDatoAula(cod);
 		if(opSeleccionada == btnAlarma.getText()) {
-			if(a.getEstadoAlarma()) {
+			if(a.getEstadoAlarma()==1) {
 				lblEstado.setBackground(Color.green);
 				btnCambiarEstado.setText("OFF");
 			}
-			else if(!a.getEstadoAlarma()){
+			else if(a.getEstadoAlarma()==0){
 				lblEstado.setBackground(Color.red);
 				btnCambiarEstado.setText("ON");
 			}

@@ -11,8 +11,8 @@ public class Aula implements Comparable<Aula>, Serializable{
 
 	// VARIABLES
 	private String nAula;
-	private boolean EstadoCalefaccion;
-	private boolean EstadoAlarma;
+	private int EstadoCalefaccion;
+	private int EstadoAlarma;
 	
 	
 	//CONSTRUCTOR POR DEFECTO
@@ -20,13 +20,19 @@ public class Aula implements Comparable<Aula>, Serializable{
 	Aula(){
 		this.nAula = "";
 		this.EstadoAlarma = new rmBoolean().getBool();
-		this.EstadoCalefaccion = false;
+		this.EstadoCalefaccion = 0;
 	}
 	
 	
 	// CONSTRUCTOR
 	
-	Aula(String nAula, boolean EstadoAlarma, boolean EstadoCalefaccion){
+	/*Aula(String nAula, boolean EstadoAlarma, boolean EstadoCalefaccion){
+		this.nAula = nAula;
+		this.EstadoAlarma = EstadoAlarma;
+		this.EstadoCalefaccion = EstadoCalefaccion;
+	}*/
+	
+	Aula(String nAula, int EstadoAlarma, int EstadoCalefaccion){
 		this.nAula = nAula;
 		this.EstadoAlarma = EstadoAlarma;
 		this.EstadoCalefaccion = EstadoCalefaccion;
@@ -50,28 +56,28 @@ public class Aula implements Comparable<Aula>, Serializable{
 	
 	// GET EstadoCalefaccion
 	
-	public boolean getEstadoCalefaccion() {
+	public int getEstadoCalefaccion() {
 		return EstadoCalefaccion;
 	}
 
 	
 	// SET EstadoCalefaccion
 	
-	public void setEstadoCalefaccion(boolean estadoCalefaccion) {
+	public void setEstadoCalefaccion(int estadoCalefaccion) {
 		EstadoCalefaccion = estadoCalefaccion;
 	}
 
 	
 	// GER EstadoAlarma
 	
-	public boolean getEstadoAlarma() {
+	public int getEstadoAlarma() {
 		return EstadoAlarma;
 	}
 
 	
 	// SET EstadoAlarma
 	
-	public void setEstadoAlarma(boolean estadoAlarma) {
+	public void setEstadoAlarma(int estadoAlarma) {
 		EstadoAlarma = estadoAlarma;
 	}
 
@@ -82,8 +88,8 @@ public class Aula implements Comparable<Aula>, Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (EstadoAlarma ? 1231 : 1237);
-		result = prime * result + (EstadoCalefaccion ? 1231 : 1237);
+		result = prime * result + EstadoAlarma;
+		result = prime * result + EstadoCalefaccion;
 		result = prime * result + ((nAula == null) ? 0 : nAula.hashCode());
 		return result;
 	}
