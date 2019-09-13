@@ -26,9 +26,9 @@ public class BD {
 		
 	}
 
-	public void cargarDatoAula(String cod) {
+	public Aula cargarDatoAula(String cod) {
 		// TODO Auto-generated method stub
-		
+		return new Aula();
 	}
 
 	public void actualizarEstado(String codAula, String opSeleccionada) {
