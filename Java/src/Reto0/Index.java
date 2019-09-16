@@ -36,21 +36,21 @@ public class Index extends JFrame implements ActionListener {
 	private JLabel lblOpcionElegidaAulas;
 	private JLabel lblAulas;
 	private JButton btnHomeMenuAulas;
-	private JButton btnEspacio1;
-	private JButton btnEspacio2;
-	private JButton btnEspacio3;
-	private JButton btnEspacio4;
-	private JButton btnEspacio5;
-	private JButton btnEspacio6;
-	private JButton btnEspacio7;
-	private JButton btnEspacio8;
-	private JButton btnEspacio9;
-	private JButton btnEspacio10;
-	private JButton btnEspacio11;
-	private JButton btnEspacio12;
-	private JButton btnEspacio13;
-	private JButton btnEspacio14;
-	private JButton btnEspacio15;
+	static JButton btnEspacio1;
+	static JButton btnEspacio2;
+	static JButton btnEspacio3;
+	static JButton btnEspacio4;
+	static JButton btnEspacio5;
+	static JButton btnEspacio6;
+	static JButton btnEspacio7;
+	static JButton btnEspacio8;
+	static JButton btnEspacio9;
+	static JButton btnEspacio10;
+	static JButton btnEspacio11;
+	static JButton btnEspacio12;
+	static JButton btnEspacio13;
+	static JButton btnEspacio14;
+	static JButton btnEspacio15;
 	
 	//Panel Plantas
 	private JPanel pnMenuPlanta;
@@ -70,7 +70,7 @@ public class Index extends JFrame implements ActionListener {
 	private JButton btnCambiarEstado;
 	
 	//Variables necesarias
-	private String opSeleccionada;
+	static String opSeleccionada;
 	
 	// Base de datos
 	private BD BBDD;
@@ -261,7 +261,7 @@ public class Index extends JFrame implements ActionListener {
 		pnMenuAulas.add(pnSelecAula);
 		pnSelecAula.setLayout(null);
 		
-		btnEspacio1 = new JButton("101");
+		btnEspacio1 = new JButton("");
 		btnEspacio1.addActionListener(this);
 		btnEspacio1.setBounds(0, 0, 75, 50);
 		pnSelecAula.add(btnEspacio1);

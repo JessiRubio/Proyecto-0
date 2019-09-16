@@ -1,5 +1,6 @@
 package Reto0;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,6 +12,7 @@ public class BD {
 
 	private static Connection conectar;
 	private Planta p;
+	private Aula a;
 
 	// Conexion a la base de datos
 	public static void conectarBD() {
@@ -28,21 +30,34 @@ public class BD {
 
 	}
 
-	// Carga los datos de la planta 
+	// Carga los datos de la planta
 	public void cargarDatosPlanta(String pselec) {
 
 		try {
 			conectarBD();
+
+			resetearbotones();
 			
 			Statement st = conectar.createStatement();
 
-			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nPlanta='1'");
+			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nPlanta='" + pselec + "'");
 
 			while (rs.next()) {
-				p = new Planta();
-				p.getAulas().add(new Aula((int) rs.getObject("nAula"), (int) rs.getObject("EstadoAlarma"),
-						(int) rs.getObject("EstadoCalefaccion")));
+				p = new Planta((String) rs.getObject("nPlanta"));
+				a = new Aula((int) rs.getObject("nAula"), (int) rs.getObject("EstadoAlarma"),
+						(int) rs.getObject("EstadoCalefaccion"));
+				p.getAulas().add(a);
+
+				// PONER EL NOMBRE A LOS BOTONES
+				nombrebotones();
 				
+				// PONER EL BOTON EN ROJO SI EL ESTADO DE LA ALARMA ES 0
+				// FALTA EVITAR QUE LO PONGA EN ROJO CUANDO ESTAS EN EL MENU DE CALEFACCION
+				if (Index.opSeleccionada.equals("Alarma")) {
+					funcionamientoalarma();
+				}
+				
+				System.out.println(p.toString());
 
 			}
 
@@ -63,8 +78,11 @@ public class BD {
 			conectarBD();
 			Statement st = conectar.createStatement();
 
-			ResultSet rs = st
-					.executeQuery("SELECT nAula, EstadoAlarma, EstadoCalefaccion FROM aula WHERE nAula='101'");//" + cod + "'");
+			ResultSet rs = st.executeQuery("SELECT nAula, EstadoAlarma, EstadoCalefaccion FROM aula WHERE nAula='101'");// "
+																														// +
+																														// cod
+																														// +
+																														// "'");
 
 			ArrayList<Aula> datosAulas = new ArrayList<>();
 
@@ -135,6 +153,106 @@ public class BD {
 
 	}
 
+	public void nombrebotones() {
+		if (Index.btnEspacio1.getText().isEmpty()) {
+			Index.btnEspacio1.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio2.getText().isEmpty()) {
+			Index.btnEspacio2.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio3.getText().isEmpty()) {
+			Index.btnEspacio3.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio4.getText().isEmpty()) {
+			Index.btnEspacio4.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio5.getText().isEmpty()) {
+			Index.btnEspacio5.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio6.getText().isEmpty()) {
+			Index.btnEspacio6.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio7.getText().isEmpty()) {
+			Index.btnEspacio7.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio8.getText().isEmpty()) {
+			Index.btnEspacio8.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio9.getText().isEmpty()) {
+			Index.btnEspacio9.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio10.getText().isEmpty()) {
+			Index.btnEspacio10.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio12.getText().isEmpty()) {
+			Index.btnEspacio12.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio13.getText().isEmpty()) {
+			Index.btnEspacio13.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio14.getText().isEmpty()) {
+			Index.btnEspacio14.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio15.getText().isEmpty()) {
+			Index.btnEspacio15.setText(Integer.toString(a.getnAula()));
+		}
+	}
+	
+	private void resetearbotones() {
+		Index.btnEspacio1.setText("");
+		Index.btnEspacio1.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio2.setText("");
+		Index.btnEspacio2.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio3.setText("");
+		Index.btnEspacio3.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio4.setText("");
+		Index.btnEspacio4.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio5.setText("");
+		Index.btnEspacio5.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio6.setText("");
+		Index.btnEspacio6.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio7.setText("");
+		Index.btnEspacio7.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio8.setText("");
+		Index.btnEspacio8.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio9.setText("");
+		Index.btnEspacio9.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio10.setText("");
+		Index.btnEspacio10.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio11.setText("");
+		Index.btnEspacio11.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio12.setText("");
+		Index.btnEspacio12.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio13.setText("");
+		Index.btnEspacio13.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio14.setText("");
+		Index.btnEspacio14.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio15.setText("");
+		Index.btnEspacio15.setBounds(170, 250, 75, 50);
+	}
+	
+	private void funcionamientoalarma() {
+		if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio1.getText())) {
+			Index.btnEspacio1.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio2.getText())) {
+			Index.btnEspacio2.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio3.getText())) {
+			Index.btnEspacio3.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio4.getText())) {
+			Index.btnEspacio4.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio5.getText())) {
+			Index.btnEspacio5.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio6.getText())) {
+			Index.btnEspacio6.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio7.getText())) {
+			Index.btnEspacio7.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio8.getText())) {
+			Index.btnEspacio8.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio9.getText())) {
+			Index.btnEspacio9.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio10.getText())) {
+			Index.btnEspacio10.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio11.getText())) {
+			Index.btnEspacio11.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio12.getText())) {
+			Index.btnEspacio12.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio13.getText())) {
+			Index.btnEspacio13.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio14.getText())) {
+			Index.btnEspacio14.setBackground(new Color(255, 0, 0));
+		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio15.getText())) {
+			Index.btnEspacio15.setBackground(new Color(255, 0, 0));
+		} 
+	}
+
+	
 	public boolean consultarAula() {
 		return false;
 
