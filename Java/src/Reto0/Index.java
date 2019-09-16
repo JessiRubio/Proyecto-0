@@ -134,7 +134,7 @@ public class Index extends JFrame implements ActionListener {
 				|| o == btnEspacio5 || o == btnEspacio6 || o == btnEspacio7 || o == btnEspacio8
 				|| o == btnEspacio9 || o == btnEspacio10 || o == btnEspacio11 || o == btnEspacio12
 				|| o == btnEspacio13 || o == btnEspacio14 || o == btnEspacio15) {
-			
+			configuracionAula();
 			configuracionAula((String)((JButton)o).getText());
 		}
 		else if(o == btnCambiarEstado) {
@@ -261,7 +261,7 @@ public class Index extends JFrame implements ActionListener {
 		pnMenuAulas.add(pnSelecAula);
 		pnSelecAula.setLayout(null);
 		
-		btnEspacio1 = new JButton("");
+		btnEspacio1 = new JButton("101");
 		btnEspacio1.addActionListener(this);
 		btnEspacio1.setBounds(0, 0, 75, 50);
 		pnSelecAula.add(btnEspacio1);
@@ -408,6 +408,7 @@ public class Index extends JFrame implements ActionListener {
 		pnInicio.setVisible(false);
 		pnMenuPlanta.setVisible(false);
 		pnMenuAulas.setVisible(true);
+		pnSelecAula.setVisible(true);
 		lblOpcionElegidaAulas.setText(opSeleccionada);
 		pnAula.setVisible(false);
 	}
@@ -418,6 +419,13 @@ public class Index extends JFrame implements ActionListener {
 		pnMenuPlanta.setVisible(false);
 		pnMenuAulas.setVisible(true);
 		pnAula.setVisible(false);
+	}
+	
+	private void configuracionAula() {
+		pnInicio.setVisible(false);
+		pnMenuPlanta.setVisible(false);
+		pnMenuAulas.setVisible(false);
+		pnAula.setVisible(true);
 	}
 	
 	//Metodo que carga la información del aula desde la base de datos
@@ -438,7 +446,18 @@ public class Index extends JFrame implements ActionListener {
 			}
 		}
 		else if(opSeleccionada == btnCalefaccion.getText()) {
-			
+			if(a.getEstadoCalefaccion()==1) {
+				lblEstado.setBackground(Color.green);
+				btnCambiarEstado.setText("OFF");
+			}
+			else if(a.getEstadoCalefaccion()==0){
+				lblEstado.setBackground(Color.red);
+				btnCambiarEstado.setText("ON");
+			}
+			else {
+				lblEstado.setBackground(Color.cyan);
+				btnCambiarEstado.setText("ON");
+			}
 		}
 	}
 	
@@ -453,4 +472,6 @@ public class Index extends JFrame implements ActionListener {
 			lblEstado.setBackground(Color.red);
 		}
 	}
+	
+	
 }

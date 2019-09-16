@@ -10,7 +10,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 	private static final long serialVersionUID = 1L;
 
 	// VARIABLES
-	private String nAula;
+	private int nAula;
 	private int EstadoCalefaccion;
 	private int EstadoAlarma;
 	
@@ -18,7 +18,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 	//CONSTRUCTOR POR DEFECTO
 	
 	Aula(){
-		this.nAula = "";
+		this.nAula = 0;
 		this.EstadoAlarma = new rmBoolean().getBool();
 		this.EstadoCalefaccion = 0;
 	}
@@ -32,7 +32,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 		this.EstadoCalefaccion = EstadoCalefaccion;
 	}*/
 	
-	Aula(String nAula, int EstadoAlarma, int EstadoCalefaccion){
+	Aula(int nAula, int EstadoAlarma, int EstadoCalefaccion){
 		this.nAula = nAula;
 		this.EstadoAlarma = EstadoAlarma;
 		this.EstadoCalefaccion = EstadoCalefaccion;
@@ -41,7 +41,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 
 	// GET nAula
 	
-	public String getnAula() {
+	public int getnAula() {
 
 		return nAula;
 	}
@@ -49,7 +49,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 	
 	// SET nAula
 	
-	public void setnAula(String nAula) {
+	public void setnAula(int nAula) {
 		this.nAula = nAula;
 	}
 
@@ -90,7 +90,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 		int result = 1;
 		result = prime * result + EstadoAlarma;
 		result = prime * result + EstadoCalefaccion;
-		result = prime * result + ((nAula == null) ? 0 : nAula.hashCode());
+		result = prime * result + nAula;
 		return result;
 	}
 	
@@ -110,10 +110,7 @@ public class Aula implements Comparable<Aula>, Serializable{
 			return false;
 		if (EstadoCalefaccion != other.EstadoCalefaccion)
 			return false;
-		if (nAula == null) {
-			if (other.nAula != null)
-				return false;
-		} else if (!nAula.equals(other.nAula))
+		if (nAula != other.nAula)
 			return false;
 		return true;
 	}
@@ -132,11 +129,17 @@ public class Aula implements Comparable<Aula>, Serializable{
 	
 	@Override
 	public int compareTo(Aula A) {
-		String n1,n2;
+		int n1,n2;
 		n1 = this.nAula;
 		n2 = A.nAula ;
 		
-		return n1.compareTo(n2);
+		if (n1>n2) {
+			return -1;
+		} else if (n1<n2) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }
