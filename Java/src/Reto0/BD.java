@@ -13,6 +13,7 @@ public class BD {
 	private static Connection conectar;
 	private Planta p;
 	private Aula a;
+	static boolean fuego = false;
 
 	// Conexion a la base de datos
 	public static void conectarBD() {
@@ -37,7 +38,7 @@ public class BD {
 			conectarBD();
 
 			resetearbotones();
-			
+
 			Statement st = conectar.createStatement();
 
 			ResultSet rs = st.executeQuery("SELECT * FROM aula WHERE nPlanta='" + pselec + "'");
@@ -50,13 +51,14 @@ public class BD {
 
 				// PONER EL NOMBRE A LOS BOTONES
 				nombrebotones();
-				
+
 				// PONER EL BOTON EN ROJO SI EL ESTADO DE LA ALARMA ES 0
-				// FALTA EVITAR QUE LO PONGA EN ROJO CUANDO ESTAS EN EL MENU DE CALEFACCION
 				if (Index.opSeleccionada.equals("Alarma")) {
 					funcionamientoalarma();
+				} else if (Index.opSeleccionada.equals("Calefaccion")) {
+
 				}
-				
+
 				System.out.println(p.toString());
 
 			}
@@ -78,11 +80,8 @@ public class BD {
 			conectarBD();
 			Statement st = conectar.createStatement();
 
-			ResultSet rs = st.executeQuery("SELECT nAula, EstadoAlarma, EstadoCalefaccion FROM aula WHERE nAula='101'");// "
-																														// +
-																														// cod
-																														// +
-																														// "'");
+			ResultSet rs = st
+					.executeQuery("SELECT nAula, EstadoAlarma, EstadoCalefaccion FROM aula WHERE nAula='" + cod + "'");
 
 			ArrayList<Aula> datosAulas = new ArrayList<>();
 
@@ -153,6 +152,7 @@ public class BD {
 
 	}
 
+	// Asigna el nombre a los botones cogiendo el numero de aula de la base de datos
 	public void nombrebotones() {
 		if (Index.btnEspacio1.getText().isEmpty()) {
 			Index.btnEspacio1.setText(Integer.toString(a.getnAula()));
@@ -184,75 +184,225 @@ public class BD {
 			Index.btnEspacio15.setText(Integer.toString(a.getnAula()));
 		}
 	}
-	
+
+	// Resetea todos los botones. Les activa, les quita el titulo y les pone el
+	// fondo por defecto.
 	private void resetearbotones() {
+		Index.btnEspacio1.setEnabled(true);
 		Index.btnEspacio1.setText("");
-		Index.btnEspacio1.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio1.setBackground(null);
+
+		Index.btnEspacio2.setEnabled(true);
 		Index.btnEspacio2.setText("");
-		Index.btnEspacio2.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio2.setBackground(null);
+
+		Index.btnEspacio3.setEnabled(true);
 		Index.btnEspacio3.setText("");
-		Index.btnEspacio3.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio3.setBackground(null);
+
+		Index.btnEspacio4.setEnabled(true);
 		Index.btnEspacio4.setText("");
-		Index.btnEspacio4.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio4.setBackground(null);
+
+		Index.btnEspacio5.setEnabled(true);
 		Index.btnEspacio5.setText("");
-		Index.btnEspacio5.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio5.setBackground(null);
+
+		Index.btnEspacio6.setEnabled(true);
 		Index.btnEspacio6.setText("");
-		Index.btnEspacio6.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio6.setBackground(null);
+
+		Index.btnEspacio7.setEnabled(true);
 		Index.btnEspacio7.setText("");
-		Index.btnEspacio7.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio7.setBackground(null);
+
+		Index.btnEspacio8.setEnabled(true);
 		Index.btnEspacio8.setText("");
-		Index.btnEspacio8.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio8.setBackground(null);
+
+		Index.btnEspacio9.setEnabled(true);
 		Index.btnEspacio9.setText("");
-		Index.btnEspacio9.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio9.setBackground(null);
+
+		Index.btnEspacio10.setEnabled(true);
 		Index.btnEspacio10.setText("");
-		Index.btnEspacio10.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio10.setBackground(null);
+
+		Index.btnEspacio11.setEnabled(true);
 		Index.btnEspacio11.setText("");
-		Index.btnEspacio11.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio11.setBackground(null);
+
+		Index.btnEspacio12.setEnabled(true);
 		Index.btnEspacio12.setText("");
-		Index.btnEspacio12.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio12.setBackground(null);
+
+		Index.btnEspacio13.setEnabled(true);
 		Index.btnEspacio13.setText("");
-		Index.btnEspacio13.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio13.setBackground(null);
+
+		Index.btnEspacio14.setEnabled(true);
 		Index.btnEspacio14.setText("");
-		Index.btnEspacio14.setBackground(new Color(170, 250, 75, 50));
+		Index.btnEspacio14.setBackground(null);
+
+		Index.btnEspacio15.setEnabled(true);
 		Index.btnEspacio15.setText("");
-		Index.btnEspacio15.setBounds(170, 250, 75, 50);
-	}
-	
-	private void funcionamientoalarma() {
-		if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio1.getText())) {
-			Index.btnEspacio1.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio2.getText())) {
-			Index.btnEspacio2.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio3.getText())) {
-			Index.btnEspacio3.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio4.getText())) {
-			Index.btnEspacio4.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio5.getText())) {
-			Index.btnEspacio5.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio6.getText())) {
-			Index.btnEspacio6.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio7.getText())) {
-			Index.btnEspacio7.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio8.getText())) {
-			Index.btnEspacio8.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio9.getText())) {
-			Index.btnEspacio9.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio10.getText())) {
-			Index.btnEspacio10.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio11.getText())) {
-			Index.btnEspacio11.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio12.getText())) {
-			Index.btnEspacio12.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio13.getText())) {
-			Index.btnEspacio13.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio14.getText())) {
-			Index.btnEspacio14.setBackground(new Color(255, 0, 0));
-		} else if (a.getEstadoAlarma()==0 && Integer.toString(a.getnAula()).equals(Index.btnEspacio15.getText())) {
-			Index.btnEspacio15.setBackground(new Color(255, 0, 0));
-		} 
+		Index.btnEspacio15.setBackground(null);
+
 	}
 
-	
+	// Funcionamiento de la alarma
+	private void funcionamientoalarma() {
+
+		// Desactivar el funcionamiento de los botones
+		Index.btnEspacio1.setEnabled(false);
+		Index.btnEspacio2.setEnabled(false);
+		Index.btnEspacio3.setEnabled(false);
+		Index.btnEspacio4.setEnabled(false);
+		Index.btnEspacio5.setEnabled(false);
+		Index.btnEspacio6.setEnabled(false);
+		Index.btnEspacio7.setEnabled(false);
+		Index.btnEspacio8.setEnabled(false);
+		Index.btnEspacio9.setEnabled(false);
+		Index.btnEspacio10.setEnabled(false);
+		Index.btnEspacio11.setEnabled(false);
+		Index.btnEspacio12.setEnabled(false);
+		Index.btnEspacio13.setEnabled(false);
+		Index.btnEspacio14.setEnabled(false);
+		Index.btnEspacio15.setEnabled(false);
+
+		// Si el estado de la alarma es 0
+		if (a.getEstadoAlarma() == 0) {
+			// fuego pasa a true
+			fuego = true;
+
+			// Si se trata del boton 1. Cambia el color del fondo a rojo
+			if (Integer.toString(a.getnAula()).equals(Index.btnEspacio1.getText())) {
+				Index.btnEspacio1.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 2. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio2.getText())) {
+				Index.btnEspacio2.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 3. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio3.getText())) {
+				Index.btnEspacio3.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 4. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio4.getText())) {
+				Index.btnEspacio4.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 5. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio5.getText())) {
+				Index.btnEspacio5.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 6. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio6.getText())) {
+				Index.btnEspacio6.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 7. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio7.getText())) {
+				Index.btnEspacio7.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 8. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio8.getText())) {
+				Index.btnEspacio8.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 9. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio9.getText())) {
+				Index.btnEspacio9.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 10. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio10.getText())) {
+				Index.btnEspacio10.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 11. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio11.getText())) {
+				Index.btnEspacio11.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 12. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio12.getText())) {
+				Index.btnEspacio12.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 13. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio13.getText())) {
+				Index.btnEspacio13.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 14. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio14.getText())) {
+				Index.btnEspacio14.setBackground(new Color(100, 0, 0));
+
+				// Si se trata del boton 15. Cambia el color del fondo a rojo
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio15.getText())) {
+				Index.btnEspacio15.setBackground(new Color(100, 0, 0));
+			}
+
+			// Si el estado de la alarma es 1
+		} else if (a.getEstadoAlarma() == 1) {
+
+			// Si se trata del boton 1. Cambia el color del fondo a verde
+			if (Integer.toString(a.getnAula()).equals(Index.btnEspacio1.getText())) {
+				Index.btnEspacio1.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 2. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio2.getText())) {
+				Index.btnEspacio2.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 3. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio3.getText())) {
+				Index.btnEspacio3.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 4. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio4.getText())) {
+				Index.btnEspacio4.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 5. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio5.getText())) {
+				Index.btnEspacio5.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 6. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio6.getText())) {
+				Index.btnEspacio6.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 7. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio7.getText())) {
+				Index.btnEspacio7.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 8. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio8.getText())) {
+				Index.btnEspacio8.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 9. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio9.getText())) {
+				Index.btnEspacio9.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 10. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio10.getText())) {
+				Index.btnEspacio10.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 11. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio11.getText())) {
+				Index.btnEspacio11.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 12. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio12.getText())) {
+				Index.btnEspacio12.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 13. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio13.getText())) {
+				Index.btnEspacio13.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 14. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio14.getText())) {
+				Index.btnEspacio14.setBackground(new Color(0, 100, 0));
+
+				// Si se trata del boton 15. Cambia el color del fondo a verde
+			} else if (Integer.toString(a.getnAula()).equals(Index.btnEspacio15.getText())) {
+				Index.btnEspacio15.setBackground(new Color(0, 100, 0));
+			}
+		}
+
+	}
+
 	public boolean consultarAula() {
 		return false;
 

@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
@@ -114,15 +115,18 @@ public class Index extends JFrame implements ActionListener {
 		else if(o ==btnPlanta1) {
 			BBDD.cargarDatosPlanta("1");
 			configuracionMenuAulas();
+			alerta();
 		}
 		else if(o ==btnPlanta2) {
 
 			BBDD.cargarDatosPlanta("2");
 			configuracionMenuAulas();
+			alerta();
 		}
 		else if(o ==btnPlanta3) {
 			BBDD.cargarDatosPlanta("3");
 			configuracionMenuAulas();
+			alerta();
 		}
 		else if (o == btnAtrasAulaSeleccionada) {
 			configuracionAulasAtras();
@@ -470,6 +474,14 @@ public class Index extends JFrame implements ActionListener {
 		}
 		else {
 			lblEstado.setBackground(Color.red);
+		}
+	}
+	
+	// Alerta en caso de incendio en algun aula
+	private void alerta() {
+		
+		if (BD.fuego == true) {
+			JOptionPane.showMessageDialog(new JFrame(), "ALERTA INCENDIO\nLLAMANDO AL 911...", "ALERTA INCENDIO", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 	
