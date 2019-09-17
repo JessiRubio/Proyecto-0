@@ -72,6 +72,7 @@ public class Index extends JFrame implements ActionListener {
 	
 	//Variables necesarias
 	static String opSeleccionada;
+	static int btn;
 	
 	// Base de datos
 	private BD BBDD;
@@ -140,9 +141,10 @@ public class Index extends JFrame implements ActionListener {
 				|| o == btnEspacio13 || o == btnEspacio14 || o == btnEspacio15) {
 			configuracionAula();
 			configuracionAula((String)((JButton)o).getText());
+			btn = Integer.parseInt(((JButton)o).getText());
 		}
 		else if(o == btnCambiarEstado) {
-			cambiarEstado((String)((JButton)o).getText());
+			cambiarEstado(btn);
 		}
 		
 	}
@@ -453,15 +455,9 @@ public class Index extends JFrame implements ActionListener {
 	}
 	
 	//Metodo que actualiza el estado de un aula si es modificada
-	private void cambiarEstado(String codAula) {
-		BBDD.actualizarEstado(codAula, opSeleccionada);
-		configuracionAulasAtras();
-		if(BBDD.consultarAula()) {
-			lblEstado.setBackground(Color.green);
-		}
-		else {
-			lblEstado.setBackground(Color.red);
-		}
+	private void cambiarEstado(int nAula) {
+		BBDD.actualizarEstado(nAula);
+		configuracionPlanta();
 	}
 	
 	// Alerta en caso de incendio en algun aula
