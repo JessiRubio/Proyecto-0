@@ -6,13 +6,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class BD {
 
 	private static Connection conectar;
 	private Planta p;
-	private Aula a;
+	private static Aula a;
 	static boolean fuego = false;
 
 	// Conexion a la base de datos
@@ -55,9 +54,7 @@ public class BD {
 				// PONER EL BOTON EN ROJO SI EL ESTADO DE LA ALARMA ES 0
 				if (Index.opSeleccionada.equals("Alarma")) {
 					funcionamientoalarma();
-				} else if (Index.opSeleccionada.equals("Calefaccion")) {
-
-				}
+				} 
 
 				System.out.println(p.toString());
 
@@ -74,25 +71,22 @@ public class BD {
 	}
 
 	// Carga los datos de la aula seleccionada
-	public Aula cargarDatoAula(String cod) {
+	public static Aula cargarDatoAula(String cod) {
 
 		try {
 			conectarBD();
 			Statement st = conectar.createStatement();
 
-			ResultSet rs = st
-					.executeQuery("SELECT nAula, EstadoAlarma, EstadoCalefaccion FROM aula WHERE nAula='" + cod + "'");
+			ResultSet rs = st.executeQuery("SELECT * FROM `aula` WHERE `nAula` = " + cod);
 
-			ArrayList<Aula> datosAulas = new ArrayList<>();
+			//ArrayList<Aula> datosAulas = new ArrayList<>();
 
 			while (rs.next()) {
+				
 
-				Aula da = new Aula();
+				a.setnAula((int) rs.getObject("nAula"));
+				a.setEstadoCalefaccion((int) rs.getObject("EstadoCalefaccion"));
 
-				da.setnAula(rs.getInt("nAula"));
-				da.setEstadoAlarma(rs.getInt("EstadoAlarma"));
-				da.setEstadoCalefaccion(rs.getInt("EstadoCalefaccion"));
-				datosAulas.add(da);
 
 			}
 
@@ -105,7 +99,7 @@ public class BD {
 			System.out.println("error");
 		}
 
-		return new Aula();
+		return a;
 
 	}
 
@@ -116,21 +110,11 @@ public class BD {
 			conectarBD();
 			Statement st = conectar.createStatement();
 
-			ResultSet rs = st.executeQuery("SELECT * FROM aula");
+			ResultSet rs = st.executeQuery("SELECT EstadoCalefaccion FROM aula");
 
 			boolean valorEstado;
 
-			if (opSeleccionada.equals("Alarma")) {
-				if ((boolean) rs.getObject("EstadoAlarma")) {
-					valorEstado = false;
-					String Ssql = "UPDATE aula SET EstadoAlarma =" + valorEstado;
-					st.execute(Ssql);
-				} else if (!(boolean) rs.getObject("EstadoAlarma")) {
-					valorEstado = true;
-					String Ssql = "UPDATE aula SET EstadoAlarma =" + valorEstado;
-					st.execute(Ssql);
-				}
-			} else if (opSeleccionada.equals("Calefaccion")) {
+			if (opSeleccionada.equals("Calefaccion")) {
 				if ((boolean) rs.getObject("EstadoCalefaccion")) {
 					valorEstado = false;
 					String Ssql = "UPDATE aula SET EstadoCalefaccion =" + valorEstado;
@@ -174,6 +158,8 @@ public class BD {
 			Index.btnEspacio9.setText(Integer.toString(a.getnAula()));
 		} else if (Index.btnEspacio10.getText().isEmpty()) {
 			Index.btnEspacio10.setText(Integer.toString(a.getnAula()));
+		} else if (Index.btnEspacio11.getText().isEmpty()) {
+			Index.btnEspacio11.setText(Integer.toString(a.getnAula()));
 		} else if (Index.btnEspacio12.getText().isEmpty()) {
 			Index.btnEspacio12.setText(Integer.toString(a.getnAula()));
 		} else if (Index.btnEspacio13.getText().isEmpty()) {

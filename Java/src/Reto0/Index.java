@@ -434,23 +434,10 @@ public class Index extends JFrame implements ActionListener {
 	
 	//Metodo que carga la información del aula desde la base de datos
 	private void configuracionAula(String cod) {
-		Aula a = BBDD.cargarDatoAula(cod);
-		if(opSeleccionada == btnAlarma.getText()) {
-			if(a.getEstadoAlarma()==1) {
-				lblEstado.setBackground(Color.green);
-				btnCambiarEstado.setText("OFF");
-			}
-			else if(a.getEstadoAlarma()==0){
-				lblEstado.setBackground(Color.red);
-				btnCambiarEstado.setText("ON");
-			}
-			else {
-				lblEstado.setBackground(Color.cyan);
-				btnCambiarEstado.setText("ON");
-			}
-		}
-		else if(opSeleccionada == btnCalefaccion.getText()) {
-			if(a.getEstadoCalefaccion()==1) {
+		Aula a = BD.cargarDatoAula(cod);
+		lblAulaSeleccionada.setText(Integer.toString(a.getnAula()));
+		if(opSeleccionada == btnCalefaccion.getText()) {
+			if(a.getEstadoCalefaccion() == 1) {
 				lblEstado.setBackground(Color.green);
 				btnCambiarEstado.setText("OFF");
 			}
@@ -481,7 +468,8 @@ public class Index extends JFrame implements ActionListener {
 	private void alerta() {
 		
 		if (BD.fuego == true) {
-			JOptionPane.showMessageDialog(new JFrame(), "ALERTA INCENDIO\nLLAMANDO AL 911...", "ALERTA INCENDIO", JOptionPane.WARNING_MESSAGE);
+			BD.fuego = false;
+			JOptionPane.showMessageDialog(new JFrame(), "ALERTA INCENDIO\nLLAMANDO AL 112...", "ALERTA INCENDIO", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 	
